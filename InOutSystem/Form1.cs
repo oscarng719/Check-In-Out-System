@@ -34,5 +34,14 @@ namespace InOutSystem
             frm.Show(this);
             frm.Location = new Point(p.X, p.Y);
         }
+
+        private void reportClick(object sender, EventArgs e)
+        {
+            Point p = this.Location;
+            Report frm = new Report();
+            this.Hide();
+            frm.Show(this);
+            frm.Location = new Point(p.X, p.Y);
+        }
     }
 }

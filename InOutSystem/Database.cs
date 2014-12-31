@@ -125,30 +125,37 @@ namespace InOutSystem
 
         private void saveClick(object sender, EventArgs e)
         {
-            if (insertClicked)
+            if (userID.Text.Equals("") || pw.Text.Equals("") || Lname.Text.Equals("") || Fname.Text.Equals(""))
             {
-                User person = new User();
-                person.id = userID.Text;
-                person.password = pw.Text;
-                person.lastName = Lname.Text;
-                person.firstName = Fname.Text;
-
-                dataList.Add(person);
+                MessageBox.Show("Data can not be empty");
             }
-            
-            if(editClicked)
+            else
             {
-                dataList[rowIndex].id = userID.Text;
-                dataList[rowIndex].password = pw.Text;
-                dataList[rowIndex].lastName = Lname.Text;
-                dataList[rowIndex].firstName = Fname.Text;
-            }
+                if (insertClicked)
+                {
+                    User person = new User();
+                    person.id = userID.Text;
+                    person.password = pw.Text;
+                    person.lastName = Lname.Text;
+                    person.firstName = Fname.Text;
 
-            saveToFile();
-            insertClicked = false;
-            editClicked = false;
-            listView1.Clear();
-            listView();
+                    dataList.Add(person);
+                }
+
+                if (editClicked)
+                {
+                    dataList[rowIndex].id = userID.Text;
+                    dataList[rowIndex].password = pw.Text;
+                    dataList[rowIndex].lastName = Lname.Text;
+                    dataList[rowIndex].firstName = Fname.Text;
+                }
+
+                saveToFile();
+                insertClicked = false;
+                editClicked = false;
+                listView1.Clear();
+                listView();
+            }
         }
 
         public void offAll()
@@ -187,7 +194,12 @@ namespace InOutSystem
 
         public void saveToFile()
         {
+            string json = JsonConvert.SerializeObject(dataList);
 
+            StreamWriter file = new StreamWriter("User.txt");
+            file.Write(json);
+
+            file.Close();
         }
     }
 }

@@ -1,1 +1,14 @@
-{"item":[{"id":"user1","password":"123","firstName":"Tom","lastName":"Cruise"},{"id":"user2","password":"456","firstName":"Maria","lastName":"Sharapova"}]}
+[
+	{
+		"id": "user1",
+		"password": "123",
+		"firstName": "Tom",
+		"lastName": "Cruise"
+	},
+	{
+		"id": "user2",
+		"password": "456",
+		"firstName": "Maria",
+		"lastName": "Sharapova"
+	}
+]
